@@ -7,6 +7,7 @@ let currentPlatform = 'youtube';
 document.addEventListener('DOMContentLoaded', () => {
     setupPlatformSelection();
     setupFetchLogic();
+    setupVipUiLogic(); // New VIP specific logic
 });
 
 function setupPlatformSelection() {
@@ -19,6 +20,53 @@ function setupPlatformSelection() {
             console.log("Switched to:", currentPlatform);
         });
     });
+}
+
+function setupVipUiLogic() {
+    // VIP Platform Selection
+    const vipIcons = document.querySelectorAll('.vip-platform-icon');
+    vipIcons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            vipIcons.forEach(i => i.classList.remove('selected'));
+            icon.classList.add('selected');
+            currentPlatform = icon.dataset.platform;
+            console.log("VIP Switched to:", currentPlatform);
+        });
+    });
+
+    // VIP Fetch Button
+    const vipFetchBtn = document.getElementById('vipFetchBtn');
+    const vipUrlInput = document.getElementById('vipVideoUrl');
+
+    if (vipFetchBtn) {
+        vipFetchBtn.addEventListener('click', () => {
+            const url = vipUrlInput.value.trim();
+            if (!url) {
+                showVipError("Priority link required.");
+                return;
+            }
+
+            vipFetchBtn.disabled = true;
+            vipFetchBtn.innerHTML = 'BYPASSING...';
+            
+            setTimeout(() => {
+                vipFetchBtn.disabled = false;
+                vipFetchBtn.innerHTML = 'SECURE FETCH';
+                console.log("VIP Fetching:", url);
+            }, 3000);
+        });
+    }
+}
+
+function showVipError(msg) {
+    const errorMsg = document.getElementById('vipErrorMsg');
+    if (!errorMsg) return;
+    
+    errorMsg.innerText = msg;
+    errorMsg.style.display = 'block';
+    setTimeout(() => {
+        errorMsg.style.display = 'none';
+    }, 4000);
 }
 
 function switchMode(mode) {
@@ -52,8 +100,10 @@ function closeVipModal() {
     setTimeout(() => {
         modal.style.display = 'none';
         if (!isVip) {
-            document.getElementById('modeNormal').classList.add('active');
-            document.getElementById('modeVip').classList.remove('active');
+            const modeNormal = document.getElementById('modeNormal');
+            const modeVip = document.getElementById('modeVip');
+            if (modeNormal) modeNormal.classList.add('active');
+            if (modeVip) modeVip.classList.remove('active');
         }
     }, 600);
 }
@@ -84,12 +134,12 @@ function setVipMode(active) {
 
     if (active) {
         body.classList.add('vip-active');
-        modeVip.classList.add('active');
-        modeNormal.classList.remove('active');
+        if (modeVip) modeVip.classList.add('active');
+        if (modeNormal) modeNormal.classList.remove('active');
     } else {
         body.classList.remove('vip-active');
-        modeNormal.classList.add('active');
-        modeVip.classList.remove('active');
+        if (modeNormal) modeNormal.classList.add('active');
+        if (modeVip) modeVip.classList.remove('active');
     }
 }
 

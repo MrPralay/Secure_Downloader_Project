@@ -771,6 +771,263 @@ input {
     margin-right: 10px;
 }
 
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+/* VIP MODE STATE HANDLING */
+body.vip-active .bg-engine,
+body.vip-active .container {
+    display: none !important;
+}
+
+.vip-bg-engine,
+.vip-container {
+    display: none;
+}
+
+body.vip-active .vip-bg-engine {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #050510 0%, #000 100%);
+    perspective: 2500px;
+}
+
+body.vip-active .vip-container {
+    display: block;
+    width: 95%;
+    max-width: 750px;
+    background: rgba(5, 5, 15, 0.5);
+    backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255, 0, 204, 0.15);
+    border-radius: 50px;
+    padding: 70px 60px;
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 40px 150px rgba(0, 0, 0, 0.9), 0 0 100px rgba(255, 0, 204, 0.1);
+    animation: vipContainerEntrance 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes vipContainerEntrance {
+    from { opacity: 0; transform: scale(0.9) translateY(30px); filter: blur(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+/* VIP PYRAMID STYLES - VIBRANT & 3D */
+.vip-pyramid-wrapper {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.vip-pyramid-3d {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.v-face {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    filter: drop-shadow(0 0 40px rgba(0, 0, 0, 0.5));
+}
+
+/* VIP COLORS & GRADIENTS */
+/* Teal-Blue (vl1, vr3, vt1) */
+.vl1 .v-face, .vr3 .v-face, .vt1 .v-face {
+    border-color: transparent transparent rgba(0, 242, 254, 0.3) transparent;
+}
+.vl1 .v-face.vf1, .vr3 .v-face.vf1, .vt1 .v-face.vf1 {
+    background: linear-gradient(135deg, #00f2fe 0%, transparent 80%);
+}
+
+/* Pink-Purple (vl3, vr1, vb1) */
+.vl3 .v-face, .vr1 .v-face, .vb1 .v-face {
+    border-color: transparent transparent rgba(255, 0, 204, 0.3) transparent;
+}
+.vl3 .v-face.vf1, .vr1 .v-face.vf1, .vb1 .v-face.vf1 {
+    background: linear-gradient(135deg, #ff00cc 0%, transparent 80%);
+}
+
+/* Orange-Yellow (vl2, vl4, vr2, vr4) */
+.vl2 .v-face, .vl4 .v-face, .vr2 .v-face, .vr4 .v-face {
+    border-color: transparent transparent rgba(254, 140, 0, 0.3) transparent;
+}
+.vl2 .v-face.vf1, .vl4 .v-face.vf1, .vr2 .v-face.vf1, .vr4 .v-face.vf1 {
+    background: linear-gradient(135deg, #fe8c00 0%, transparent 80%);
+}
+
+.v-face.vf2 { opacity: 0.2; }
+.v-face.vf3 { opacity: 0.1; }
+
+/* VIP SIZING */
+.vip-pyramid-3d.v-big { width: 380px; height: 380px; }
+.vip-pyramid-3d.v-med-large { width: 260px; height: 260px; }
+.vip-pyramid-3d.v-small { width: 160px; height: 160px; }
+.vip-pyramid-3d.v-tiny { width: 80px; height: 80px; }
+
+.vip-pyramid-3d.v-big .v-face { border-width: 0 190px 329px 190px; transform-origin: 50% 100%; }
+.vip-pyramid-3d.v-med-large .v-face { border-width: 0 130px 225px 130px; transform-origin: 50% 100%; }
+.vip-pyramid-3d.v-small .v-face { border-width: 0 80px 138px 80px; transform-origin: 50% 100%; }
+.vip-pyramid-3d.v-tiny .v-face { border-width: 0 40px 69px 40px; transform-origin: 50% 100%; }
+
+.vip-pyramid-3d.v-big .v-face.vf1 { transform: rotateY(0deg) translateZ(108px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-big .v-face.vf2 { transform: rotateY(120deg) translateZ(108px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-big .v-face.vf3 { transform: rotateY(240deg) translateZ(108px) rotateX(19.5deg); }
+
+.vip-pyramid-3d.v-med-large .v-face.vf1 { transform: rotateY(0deg) translateZ(74px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-med-large .v-face.vf2 { transform: rotateY(120deg) translateZ(74px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-med-large .v-face.vf3 { transform: rotateY(240deg) translateZ(74px) rotateX(19.5deg); }
+
+.vip-pyramid-3d.v-small .v-face.vf1 { transform: rotateY(0deg) translateZ(46px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-small .v-face.vf2 { transform: rotateY(120deg) translateZ(46px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-small .v-face.vf3 { transform: rotateY(240deg) translateZ(46px) rotateX(19.5deg); }
+
+.vip-pyramid-3d.v-tiny .v-face.vf1 { transform: rotateY(0deg) translateZ(23px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-tiny .v-face.vf2 { transform: rotateY(120deg) translateZ(23px) rotateX(19.5deg); }
+.vip-pyramid-3d.v-tiny .v-face.vf3 { transform: rotateY(240deg) translateZ(23px) rotateX(19.5deg); }
+
+/* VIP ANIMATIONS (SPIN & DRIFT - EXACT MATCH TO NORMAL MODE) */
+.vl1 .vip-pyramid-3d { animation: spin-1 80s infinite linear; animation-delay: -12s; }
+.vl2 .vip-pyramid-3d { animation: spin-2 95s infinite linear; animation-delay: -5s; }
+.vl3 .vip-pyramid-3d { animation: spin-3 110s infinite linear; animation-delay: -20s; }
+.vl4 .vip-pyramid-3d { animation: spin-1 125s infinite linear; animation-delay: -33s; }
+
+.vr1 .vip-pyramid-3d { animation: spin-2 85s infinite linear; animation-delay: -8s; }
+.vr2 .vip-pyramid-3d { animation: spin-3 100s infinite linear; animation-delay: -15s; }
+.vr3 .vip-pyramid-3d { animation: spin-1 115s infinite linear; animation-delay: -25s; }
+.vr4 .vip-pyramid-3d { animation: spin-2 135s infinite linear; animation-delay: -40s; }
+.vt1 .vip-pyramid-3d { animation: spin-3 120s infinite linear; animation-delay: -10s; }
+.vb1 .vip-pyramid-3d { animation: spin-1 140s infinite linear; animation-delay: -30s; }
+
+/* POSITIONING & DRIFT (EXACT MATCH TO NORMAL MODE) */
+.vl1 { top: 5%; left: 3%; animation: drift-1 70s infinite linear; } 
+.vl2 { bottom: 8%; left: 5%; animation: drift-2 85s infinite linear; } 
+.vl3 { top: 45%; left: 0%; animation: drift-3 95s infinite linear; } 
+.vl4 { top: 25%; left: 18%; animation: drift-1 110s infinite linear; animation-delay: -15s; } 
+
+.vr1 { top: 8%; right: 3%; animation: drift-2 75s infinite linear; } 
+.vr2 { bottom: 5%; right: 0%; animation: drift-3 90s infinite linear; } 
+.vr3 { top: 40%; right: 5%; animation: drift-1 105s infinite linear; } 
+.vr4 { top: 50%; right: 20%; animation: drift-2 125s infinite linear; animation-delay: -25s; } 
+.vt1 { top: -2%; left: 45%; animation: drift-3 130s infinite linear; } 
+.vb1 { bottom: -2%; left: 35%; animation: drift-2 140s infinite linear; animation-delay: -50s; } 
+
+
+/* VIP UI ELEMENTS */
+.vip-container h1 {
+    font-size: 72px;
+    background: linear-gradient(to bottom, #fff, #ff00cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 0, 204, 0.3);
+}
+
+.vip-subtitle {
+    color: #ff00cc;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.vip-mode-toggle {
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    width: fit-content;
+    margin: 0 auto 50px;
+    padding: 5px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 0, 204, 0.3);
+}
+
+.vip-mode-btn {
+    padding: 12px 35px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 800;
+    transition: all 0.4s ease;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.vip-mode-btn.active {
+    color: #fff;
+    background: linear-gradient(90deg, #ff00cc, #3333ff);
+    box-shadow: 0 0 20px rgba(255, 0, 204, 0.5);
+}
+
+.vip-platform-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.vip-platform-icon {
+    width: 65px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.vip-platform-icon svg { width: 28px; height: 28px; fill: rgba(255, 255, 255, 0.4); }
+
+.vip-platform-icon:hover {
+    transform: translateY(-8px) scale(1.1);
+    background: rgba(255, 0, 204, 0.1);
+    border-color: #ff00cc;
+}
+
+.vip-platform-icon.selected {
+    background: rgba(255, 0, 204, 0.2);
+    border-color: #ff00cc;
+    box-shadow: 0 0 30px rgba(255, 0, 204, 0.6);
+}
+
+.vip-platform-icon.selected svg { fill: #fff; }
+
+.vip-input-group {
+    display: flex;
+    gap: 20px;
+}
+
+.vip-input-wrapper { flex: 1; }
+
+.vip-input-wrapper input {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 0, 204, 0.2);
+    border-radius: 15px;
+    padding: 20px 30px;
+    font-size: 16px;
+}
+
+.vip-input-wrapper input:focus {
+    border-color: #ff00cc;
+    box-shadow: 0 0 15px rgba(255, 0, 204, 0.2);
+}
+
+.vip-fetch-btn {
+    padding: 0 45px;
+    background: linear-gradient(90deg, #ff00cc, #3333ff);
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(255, 0, 204, 0.4);
+}
+
+.vip-fetch-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 0, 204, 0.6);
 }
