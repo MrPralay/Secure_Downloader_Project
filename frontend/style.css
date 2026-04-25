@@ -788,7 +788,7 @@ body.vip-active .vip-bg-engine {
     inset: 0;
     z-index: -1;
     overflow: hidden;
-    background: radial-gradient(circle at center, #050510 0%, #000 100%);
+    background: radial-gradient(circle at center, #0a0a25 0%, #000 100%);
     perspective: 2500px;
 }
 
@@ -826,39 +826,31 @@ body.vip-active .vip-container {
 
 .v-face {
     position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    filter: drop-shadow(0 0 40px rgba(0, 0, 0, 0.5));
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-/* VIP COLORS & GRADIENTS */
+/* VIP COLORS & NEON GLOWS */
 /* Teal-Blue (vl1, vr3, vt1) */
 .vl1 .v-face, .vr3 .v-face, .vt1 .v-face {
-    border-color: transparent transparent rgba(0, 242, 254, 0.3) transparent;
-}
-.vl1 .v-face.vf1, .vr3 .v-face.vf1, .vt1 .v-face.vf1 {
-    background: linear-gradient(135deg, #00f2fe 0%, transparent 80%);
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.8) 0%, rgba(79, 172, 254, 0.6) 100%);
+    filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.95));
 }
 
 /* Pink-Purple (vl3, vr1, vb1) */
 .vl3 .v-face, .vr1 .v-face, .vb1 .v-face {
-    border-color: transparent transparent rgba(255, 0, 204, 0.3) transparent;
-}
-.vl3 .v-face.vf1, .vr1 .v-face.vf1, .vb1 .v-face.vf1 {
-    background: linear-gradient(135deg, #ff00cc 0%, transparent 80%);
+    background: linear-gradient(135deg, rgba(255, 0, 204, 0.8) 0%, rgba(102, 0, 255, 0.6) 100%);
+    filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.95));
 }
 
 /* Orange-Yellow (vl2, vl4, vr2, vr4) */
 .vl2 .v-face, .vl4 .v-face, .vr2 .v-face, .vr4 .v-face {
-    border-color: transparent transparent rgba(254, 140, 0, 0.3) transparent;
-}
-.vl2 .v-face.vf1, .vl4 .v-face.vf1, .vr2 .v-face.vf1, .vr4 .v-face.vf1 {
-    background: linear-gradient(135deg, #fe8c00 0%, transparent 80%);
+    background: linear-gradient(135deg, rgba(254, 140, 0, 0.8) 0%, rgba(248, 54, 0, 0.6) 100%);
+    filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.95));
 }
 
-.v-face.vf2 { opacity: 0.2; }
-.v-face.vf3 { opacity: 0.1; }
+.v-face.vf1 { opacity: 0.55; }
+.v-face.vf2 { opacity: 0.40; }
+.v-face.vf3 { opacity: 0.25; }
 
 /* VIP SIZING */
 .vip-pyramid-3d.v-big { width: 380px; height: 380px; }
@@ -866,10 +858,10 @@ body.vip-active .vip-container {
 .vip-pyramid-3d.v-small { width: 160px; height: 160px; }
 .vip-pyramid-3d.v-tiny { width: 80px; height: 80px; }
 
-.vip-pyramid-3d.v-big .v-face { border-width: 0 190px 329px 190px; transform-origin: 50% 100%; }
-.vip-pyramid-3d.v-med-large .v-face { border-width: 0 130px 225px 130px; transform-origin: 50% 100%; }
-.vip-pyramid-3d.v-small .v-face { border-width: 0 80px 138px 80px; transform-origin: 50% 100%; }
-.vip-pyramid-3d.v-tiny .v-face { border-width: 0 40px 69px 40px; transform-origin: 50% 100%; }
+.vip-pyramid-3d.v-big .v-face { width: 380px; height: 329px; transform-origin: 50% 100%; }
+.vip-pyramid-3d.v-med-large .v-face { width: 260px; height: 225px; transform-origin: 50% 100%; }
+.vip-pyramid-3d.v-small .v-face { width: 160px; height: 138px; transform-origin: 50% 100%; }
+.vip-pyramid-3d.v-tiny .v-face { width: 80px; height: 69px; transform-origin: 50% 100%; }
 
 .vip-pyramid-3d.v-big .v-face.vf1 { transform: rotateY(0deg) translateZ(108px) rotateX(19.5deg); }
 .vip-pyramid-3d.v-big .v-face.vf2 { transform: rotateY(120deg) translateZ(108px) rotateX(19.5deg); }
@@ -904,7 +896,7 @@ body.vip-active .vip-container {
 .vl1 { top: 5%; left: 3%; animation: drift-1 70s infinite linear; } 
 .vl2 { bottom: 8%; left: 5%; animation: drift-2 85s infinite linear; } 
 .vl3 { top: 45%; left: 0%; animation: drift-3 95s infinite linear; } 
-.vl4 { top: 25%; left: 18%; animation: drift-1 110s infinite linear; animation-delay: -15s; } 
+.vl4 { top: 6%; left: 26%; animation: drift-1 110s infinite linear; animation-delay: -15s; } 
 
 .vr1 { top: 8%; right: 3%; animation: drift-2 75s infinite linear; } 
 .vr2 { bottom: 5%; right: 0%; animation: drift-3 90s infinite linear; } 
