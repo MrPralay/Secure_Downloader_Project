@@ -144,6 +144,33 @@
         </div>
     </div>
 
+    <!-- VIP AUTH PORTAL -->
+    <div class="vip-modal-overlay" id="vipModal">
+        <div class="vip-modal">
+            <div class="shield-anchor">
+                <div class="shield-outer">
+                    <div class="shield-inner">
+                        <svg viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.5h7c-.47 4.15-3.08 7.82-7 8.91V11.5H5V6.3l7-3.11v8.31z" />
+                        </svg>
+                        <div class="shield-badge">!</div>
+                    </div>
+                    <div class="shield-pulse"></div>
+                </div>
+            </div>
+
+            <div class="vip-content">
+                <h2>ACTIVATE ENGINE</h2>
+                <div class="vip-field">
+                    <span class="field-icon">🔒</span>
+                    <input type="password" id="vipPass" placeholder="••••••••••">
+                </div>
+                <button class="unlock-btn" onclick="verifyVip()">UNLOCK ACCESS</button>
+                <div class="cancel-link" onclick="closeVipModal()">Cancel</div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
