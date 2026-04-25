@@ -796,7 +796,7 @@ body.vip-active .vip-container {
     display: block;
     width: 95%;
     max-width: 650px;
-    background: rgba(5, 5, 15, 0.5);
+    background: rgba(5, 5, 15, 0.4);
     backdrop-filter: blur(40px) saturate(200%);
     border: 1px solid rgba(255, 0, 204, 0.15);
     border-radius: 50px;
@@ -908,16 +908,16 @@ body.vip-active .vip-container {
 
 /* VIP UI ELEMENTS */
 .vip-container h1 {
-    font-size: 72px;
-    background: linear-gradient(to bottom, #fff, #ff00cc);
+    font-size: 64px;
+    background: linear-gradient(to bottom, #e066ff, #6600cc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(255, 0, 204, 0.3);
+    text-shadow: 0 0 30px rgba(153, 0, 204, 0.5);
 }
 
 .vip-subtitle {
-    color: #ff00cc;
-    font-size: 14px;
+    color: #cc33ff;
+    font-size: 13px;
     letter-spacing: 3px;
     margin-bottom: 50px;
     text-transform: uppercase;
@@ -929,13 +929,13 @@ body.vip-active .vip-container {
     background: rgba(0, 0, 0, 0.5);
     width: fit-content;
     margin: 0 auto 50px;
-    padding: 5px;
+    padding: 4px;
     border-radius: 50px;
     border: 1px solid rgba(255, 0, 204, 0.3);
 }
 
 .vip-mode-btn {
-    padding: 12px 35px;
+    padding: 12px 30px;
     border-radius: 50px;
     cursor: pointer;
     font-size: 14px;
@@ -953,16 +953,16 @@ body.vip-active .vip-container {
 .vip-platform-grid {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: 50px;
 }
 
 .vip-platform-icon {
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border-radius: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -970,7 +970,7 @@ body.vip-active .vip-container {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.vip-platform-icon svg { width: 28px; height: 28px; fill: rgba(255, 255, 255, 0.4); }
+.vip-platform-icon svg { width: 24px; height: 24px; fill: rgba(255, 255, 255, 0.4); }
 
 .vip-platform-icon:hover {
     transform: translateY(-8px) scale(1.1);
@@ -988,7 +988,7 @@ body.vip-active .vip-container {
 
 .vip-input-group {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .vip-input-wrapper { flex: 1; }
@@ -996,9 +996,9 @@ body.vip-active .vip-container {
 .vip-input-wrapper input {
     background: rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 0, 204, 0.2);
-    border-radius: 15px;
-    padding: 20px 30px;
-    font-size: 16px;
+    border-radius: 12px;
+    padding: 18px 25px;
+    font-size: 15px;
 }
 
 .vip-input-wrapper input:focus {
@@ -1007,11 +1007,12 @@ body.vip-active .vip-container {
 }
 
 .vip-fetch-btn {
-    padding: 0 45px;
+    padding: 0 35px;
     background: linear-gradient(90deg, #ff00cc, #3333ff);
     border: none;
-    border-radius: 15px;
+    border-radius: 12px;
     color: #fff;
+    font-size: 14px;
     font-weight: 800;
     letter-spacing: 2px;
     cursor: pointer;
