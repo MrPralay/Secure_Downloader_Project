@@ -538,9 +538,42 @@ input {
     margin-right: 10px;
 }
 
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+/* STAGGERED MODAL CONTENT */
+.vip-modal-overlay.active .vip-content h2 { 
+    opacity: 1; 
+    transform: translateY(0); 
+    transition: all 0.6s 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
+.vip-modal-overlay.active .vip-field { 
+    opacity: 1; 
+    transform: translateY(0); 
+    transition: all 0.6s 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.vip-modal-overlay.active .unlock-btn { 
+    opacity: 1; 
+    transform: translateY(0); 
+    transition: all 0.6s 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.vip-modal-overlay.active .cancel-link { 
+    opacity: 1; 
+    transform: translateY(0); 
+    transition: all 0.6s 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.vip-content h2, .vip-field, .unlock-btn, .cancel-link {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.vip-modal-overlay.active .shield-anchor {
+    animation: shieldDrop 0.8s 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes shieldDrop {
+    from { opacity: 0; transform: translate(-50%, -100px) scale(0.5); }
+    to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
 
 /* VIP AUTH PORTAL - PREMIUM ANIMATIONS */
 .vip-modal-overlay {
